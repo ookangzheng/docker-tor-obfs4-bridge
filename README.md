@@ -45,7 +45,7 @@ services:
             - '51000:51000'
             - '9150:9150'
         volumes:
-            - 'tor_obfs4_bridge_data:/var/lib/tor'
+            - './tor_obfs4_bridge_data:/var/lib/tor'
         tmpfs: '/tmp:rw,size=4k'
         image: 'ookangzheng/docker-tor-obfs-bridge:latest'
 ```
