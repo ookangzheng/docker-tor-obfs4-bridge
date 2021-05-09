@@ -1,9 +1,9 @@
 # https://pkgs.alpinelinux.org/packages?name=obfs4proxy&arch=x86_64
 FROM alpine:latest
 
-#ARG TOR_PACKAGE_VERSION=0.4.5.7
+#ARG TOR_PACKAGE_VERSION=0.4.5.7-r0
 #ARG OBFS4PROXY_PACKAGE_VERSION=0.0.11-r2
-RUN apk update && apk add --no-cache tor -X http://dl-cdn.alpinelinux.org/alpine/edge
+RUN apk update && apk add --no-cache tor=0.4.5.7-r0 -X http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 RUN apk add --no-cache obfs4proxy -X http://dl-cdn.alpinelinux.org/alpine/edge/testing
 
