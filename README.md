@@ -29,26 +29,11 @@ to make the container's root filesystem read only
 
 verify status of bridge at  https://metrics.torproject.org/rs.html
 
-## Docker-compose
+## Build & Push to docker hub
 
-```
-version: '3.3'
-services:
-    docker-tor-obfs-bridge:
-        container_name: tor_obfs4_bridge
-        environment:
-            - OR_PORT=42218
-            - PT_PORT=51804
-            - CONTACT_INFO=admin@optional.com
-        ports:
-            - '42218:42218'
-            - '51000:51000'
-            - '9150:9150'
-        volumes:
-            - './tor_obfs4_bridge_data:/var/lib/tor'
-        tmpfs: '/tmp:rw,size=4k'
-        image: 'ookangzheng/docker-tor-obfs-bridge:latest'
-```
+`docker build -t="ookangzheng/docker-tor-obfs-bridge" .`
+
+`docker push ookangzheng/docker-tor-obfs-bridge` 
 
 ## further reading
 
