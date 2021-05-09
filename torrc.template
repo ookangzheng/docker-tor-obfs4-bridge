@@ -4,7 +4,11 @@ Log notice stdout
 DataDirectory /var/lib/tor
 
 # disable socks proxy
-SOCKSPort 0
+#SOCKSPort 0
+
+HardwareAccel 1
+DNSPort 0.0.0.0:8853
+SocksPort 0.0.0.0:9150
 
 BridgeRelay 1
 ServerTransportPlugin obfs4 exec /usr/bin/obfs4proxy
@@ -12,5 +16,11 @@ ExtORPort auto
 ORPort {OR_PORT}
 ServerTransportListenAddr obfs4 0.0.0.0:{PT_PORT}
 
+PublishServerDescriptor 0
+ExitPolicy reject *:*
+BridgeDistribution none
+
 Nickname FPHmmrleObfs4Bridge
 ContactInfo {CONTACT_INFO}
+
+#https://sigvids.gitlab.io/create-tor-private-obfs4-bridges.html
