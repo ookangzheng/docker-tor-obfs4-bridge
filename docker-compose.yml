@@ -6,11 +6,24 @@ services:
             - OR_PORT=42218
             - PT_PORT=51000
             - CONTACT_INFO=admin@optional.com
-        ports:
-            - '42218:42218'
-            - '51000:51000'
-            - '9150:9150'
+#         ports:
+#             - '42218:42218'
+#             - '51000:51000'
+#             - '9150:9150'
         volumes:
             - './tor_obfs4_bridge_data:/var/lib/tor'
         tmpfs: '/tmp:rw,size=4k'
         image: ookangzheng/docker-tor-obfs-bridge:latest
+        network_mode: 'service:guard-socks'
+
+    guard-socks:
+         container_name: guard-socks
+         environment:
+            - PROXY_USER=<CHANGE ME>
+            - PROXY_PASS=<CHANGE ME>
+         ports:
+            - '9151:9151'
+            - '42218:42218'
+            - '51000:51000'
+            - '9150:9150'
+         image: ookangzheng/guard-socks:latest
