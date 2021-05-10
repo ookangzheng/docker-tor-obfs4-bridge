@@ -35,6 +35,10 @@ verify status of bridge at  https://metrics.torproject.org/rs.html
 
 `docker push ookangzheng/docker-tor-obfs-bridge` 
 
-## further reading
+only verify status (if public bridge) of bridge at  https://metrics.torproject.org/rs.html
 
-https://community.torproject.org/relay/setup/bridge/
+## Add a protection layer with guard-socks
+
+`curl --socks5-hostname 127.0.0.1:9150 https://ipinfo.tw/ip` Normal curl to test Tor
+
+`curl --socks5-hostname "username:password@127.0.0.1:9151" https://ipinfo.tw/ip` Test tor with upstream SOCKS5
